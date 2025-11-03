@@ -1,0 +1,62 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#fff;
+  --accent:#0b5ed7;
+  --muted:#666;
+  --radius:12px;
+  --shadow: 0 6px 18px rgba(10,10,50,0.06);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#111;
+  -webkit-font-smoothing:antialiased;
+}
+header{
+  padding:18px;
+  text-align:center;
+}
+h1{margin:0;font-size:1.3rem}
+.muted{color:var(--muted);font-size:.95rem;margin-top:6px}
+
+main{max-width:980px;margin:14px auto;padding:12px}
+.card{
+  background:var(--card);
+  padding:14px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:12px;
+}
+.card.small{padding:10px}
+.label{display:block;font-weight:700;margin-bottom:8px}
+input[type="file"]{width:100%}
+.file-names{margin-top:8px;color:var(--muted);font-size:.95rem}
+.buttons{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+button{
+  background:var(--accent);
+  color:#fff;
+  border:0;
+  padding:10px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+}
+button.secondary{background:#e9eefc;color:var(--accent);font-weight:700;border:1px solid rgba(11,94,215,0.12)}
+.progress{margin-top:8px;color:var(--muted);font-size:.95rem}
+textarea{
+  width:100%;
+  min-height:180px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #e6e9f0;
+  font-family:monospace;
+}
+.log{background:#0f1724;color:#fff;padding:10px;border-radius:8px;min-height:60px;overflow:auto;font-size:.9rem}
+.hint{font-size:.88rem;color:var(--muted);margin-top:8px}
+footer{text-align:center;padding:10px;color:var(--muted);font-size:.9rem}
+@media (max-width:700px){
+  main{padding:10px}
+  button{flex:1 1 auto}
+}
