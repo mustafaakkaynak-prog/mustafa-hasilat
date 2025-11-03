@@ -69,3 +69,39 @@ function downloadExcel() {
     a.download = file;
     a.click();
 }
+function downloadExcel() {
+    const stok = JSON.parse(localStorage.getItem("stok") || "{}");
+
+    const workbook = XLSX.utils.book_new();
+
+    function sheetFrom(type, title) {
+        const rows = [];
+
+        const productMap = JSON.parse(localStorage.getItem("product_map") || "{}");
+        const products = Object.keys(productMap);
+
+        products.forEach(product => {
+            const gelen = stok[`${type}_gelen`]?.[product] || 0;
+            const cikis = (stok.kiz_cikis?.[product] || 0) + (stok.erkek_cikis?.[product] || 0);
+            const kalan = stok[`${type}_kalan`]?.[product] || 0;
+
+            rows.push({
+                Ürün: product,
+                Gelen: gelen,
+                Çıkan: type === "okul" ? cikis : gelen,
+                Kalan: kalan,
+                Satılan: type === "okul" ? (gelen - cikis - kalan) : (gelen - kalan)
+            });
+        });
+
+        const sheet = XLSX.utils.json_to_sheet(rows);
+        XLSX.utils.book_append_sheet(workbook, sheet, title);
+    }
+
+    sheetFrom("okul", "OKUL");
+    sheetFrom("kiz", "YURT KIZ");
+    sheetFrom("erkek", "YURT ERKEK");
+
+    const filename = `HASILAT_${new Date().toISOString().slice(0,10)}.xlsx`;
+    XLSX.writeFile(workbook, filename);
+}
