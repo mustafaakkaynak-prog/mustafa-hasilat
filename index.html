@@ -7,6 +7,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h2>📦 Haftalık Stok İşleme Sistemi</h2>
+<p>Fotoğrafları Google Lens ile metne çevir → buraya yükle</p>
+<hr>
+
+<h3>📥 Fatura Yükle (OKUL Giriş)</h3>
+<input type="file" accept=".txt" onchange="processImage(this.files[0], 'okul_gelen')">
+
+<h3>🚚 Kız Yurdu Çıkış</h3>
+<input type="file" accept=".txt" onchange="processImage(this.files[0], 'kiz_cikis')">
+
+<h3>🚚 Erkek Yurdu Çıkış</h3>
+<input type="file" accept=".txt" onchange="processImage(this.files[0], 'erkek_cikis')">
+
+<h3>📷 Okul Kalan</h3>
+<input type="file" accept=".txt" onchange="processImage(this.files[0], 'okul_kalan')">
+
+<h3>📷 Kız Yurt Kalan</h3>
+<input type="file" accept=".txt" onchange="processImage(this.files[0], 'kiz_kalan')">
+
+<h3>📷 Erkek Yurt Kalan</h3>
+<input type="file" accept=".txt" onchange="processImage(this.files[0], 'erkek_kalan')">
+
+<hr>
+<button onclick="downloadExcel()">📊 Excel Oluştur</button>
+
   <header>
     <h1>Hasılat Takip Aracı</h1>
     <p class="muted">Fotoğraf yükle → OCR çalışsın → Metni düzelt → Excel indir. (Tarayıcı içinde, veri dışarı çıkmaz.)</p>
